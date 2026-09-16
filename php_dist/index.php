@@ -14,7 +14,7 @@ $bookingSuccess = null;
 $error = '';
 
 // Processar formulário de Agendamento
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'create_appointment') {
+if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST' && isset($_POST['action']) && $_POST['action'] === 'create_appointment') {
     $clientName = trim($_POST['clientName'] ?? '');
     $clientPhone = trim($_POST['clientPhone'] ?? '');
     $serviceId = $_POST['serviceId'] ?? '';

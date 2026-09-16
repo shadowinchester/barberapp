@@ -143,34 +143,52 @@ switch ($action) {
           <div className="bg-stone-950 border border-stone-800 p-4 rounded-xl space-y-2">
             <div className="flex items-center gap-2 text-amber-400 font-semibold text-sm">
               <Server className="w-4 h-4" />
-              Como funciona este aplicativo
+              Versão 100% PHP Puro SEM PASTAS (InfinityFree / cPanel)
             </div>
             <p className="leading-relaxed">
-              O aplicativo foi construído exatamente como você pediu: funciona como um aplicativo web
-              completo com duas páginas (uma para o <strong>Cliente</strong> com agendamento rápido e
-              outra para o <strong>Barbeiro</strong> com gestão de horários e serviços), e utiliza{' '}
-              <strong>persistência de dados em arquivos JSON</strong> (<code className="text-amber-300">barber_data.json</code>).
+              Desenvolvemos a versão definitiva em <strong>PHP Puro com dados em JSON sem nenhuma subpasta</strong>!
+              Basta enviar os arquivos diretamente para a pasta <strong><code>htdocs/</code></strong> do InfinityFree.
+              Não precisa criar pasta <code>data/</code>, não precisa de Node.js e nunca mais terá tela branca!
             </p>
-            <p className="leading-relaxed">
-              No ambiente atual em nuvem, o aplicativo roda com o servidor web ativo e o arquivo{' '}
-              <code className="text-amber-300">data/barber_data.json</code> salvo no disco. Além disso,
-              já deixamos o arquivo <code className="text-amber-300">php/api.php</code> criado e pronto
-              para quem desejar subir para um servidor PHP (cPanel, Hospedagem compartilhada, XAMPP ou Laragon).
-            </p>
+            <div className="pt-2 flex flex-wrap gap-2">
+              <a
+                href="/barbearia-php-sem-pastas.zip"
+                download="barbearia-php-sem-pastas.zip"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold rounded-lg text-xs transition-colors"
+              >
+                <FileCode className="w-3.5 h-3.5" />
+                Baixar ZIP PHP Sem Pastas
+              </a>
+              <a
+                href="/php_dist/index.php"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-stone-800 hover:bg-stone-700 text-amber-400 font-semibold rounded-lg text-xs transition-colors"
+              >
+                <ExternalLink className="w-3.5 h-3.5" />
+                Abrir PHP Direto
+              </a>
+            </div>
           </div>
 
           <div>
             <div className="flex items-center justify-between mb-1.5">
               <span className="font-semibold text-stone-200">
-                Estrutura de Arquivos para Servidor PHP:
+                Estrutura de Arquivos Plana (Sem Pastas no htdocs):
               </span>
             </div>
             <pre className="bg-stone-950 p-3 rounded-xl border border-stone-800 text-[11px] font-mono text-stone-300">
-{`meu-site-barbearia/
-├── index.html              (Interface web do Cliente e Barbeiro)
-├── api.php                 (Script PHP que lê/grava o JSON)
-└── data/
-    └── barber_data.json    (Arquivo JSON onde ficam os agendamentos e serviços)`}
+{`htdocs/
+├── index.php                 (Página pública de agendamento online)
+├── login.php                 (Tela de login para Admin, Barbeiros e Clientes)
+├── admin.php                 (Painel de administração e relatórios)
+├── barbeiro.php              (Painel de atendimento do barbeiro)
+├── meus-agendamentos.php     (Painel histórico de cortes do cliente)
+├── db.php                    (Funções nativas de leitura e escrita do JSON)
+├── api.php                   (Endpoints de horários livres em JSON)
+├── logout.php                (Encerramento seguro de sessão)
+├── barber_data.json          (Banco de dados JSON no mesmo diretório!)
+└── .htaccess                 (Protege o JSON contra download público)`}
             </pre>
           </div>
 

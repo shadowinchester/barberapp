@@ -8,7 +8,7 @@ $error = '';
 $activeTab = $_GET['tab'] ?? 'agenda';
 
 // --- AÇÕES DO FORMULÁRIO DO ADMIN ---
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
     $action = $_POST['action'] ?? '';
 
     // 1. Alterar status de agendamento

@@ -11,7 +11,7 @@ if (isset($_GET['msg']) && $_GET['msg'] === 'desconectado') {
 }
 
 // Processar formulário de Login
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'do_login') {
+if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST' && isset($_POST['action']) && $_POST['action'] === 'do_login') {
     $role = $_POST['role'] ?? 'cliente';
     $selectedRole = $role;
     $credential = trim(strtolower($_POST['credential'] ?? ''));
@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 }
 
 // Processar formulário de Cadastro rápido de cliente
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'do_register') {
+if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST' && isset($_POST['action']) && $_POST['action'] === 'do_register') {
     $activeTab = 'cadastro';
     $name = trim($_POST['name'] ?? '');
     $phone = trim($_POST['phone'] ?? '');

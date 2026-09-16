@@ -15,11 +15,11 @@ Este projeto foi refeito em **PHP Puro com armazenamento em arquivo JSON** para 
 - **Renderização 100% no Servidor (SSR):** O Apache do InfinityFree executa o PHP e entrega o HTML completo e pronto para o navegador.
 - **Zero compilação:** Não precisa de `npm install`, nem `npm run build`, nem Node.js.
 - **Estilos via CDN Oficial:** Usa Tailwind CSS direto do CDN global, sem carregar arquivos CSS ou JS comprimidos locais que o InfinityFree costuma corromper.
-- **Banco de Dados em JSON nativo:** Salva e lê tudo do arquivo `data/barber_data.json` através das funções nativas do PHP (`file_get_contents`, `file_put_contents` com `flock`).
+- **Banco de Dados em JSON nativo:** Salva e lê tudo diretamente de `barber_data.json` (no mesmo diretório, **SEM PASTAS**!) através das funções nativas do PHP (`file_get_contents`, `file_put_contents` com `flock`).
 
 ---
 
-## 🚀 PASSO A PASSO PARA SUBIR NO INFINITYFREE (5 MINUTOS):
+## 🚀 PASSO A PASSO PARA SUBIR NO INFINITYFREE (SEM PASTAS):
 
 ### Passo 1: Acessar a pasta `htdocs`
 1. Faça login no painel do InfinityFree (https://dash.infinityfree.com).
@@ -27,8 +27,8 @@ Este projeto foi refeito em **PHP Puro com armazenamento em arquivo JSON** para 
 3. Entre na pasta **`htdocs`**.
 4. **IMPORTANTE:** Se houver arquivos padrão dentro de `htdocs` (como `index2.html` ou arquivos antigos), **apague todos**. A pasta `htdocs` deve estar limpa.
 
-### Passo 2: Enviar os arquivos deste projeto
-Envie todos os arquivos da pasta para dentro de **`htdocs/`**:
+### Passo 2: Enviar os arquivos deste projeto (TODOS NA RAIZ, SEM PASTAS)
+Envie todos os arquivos diretamente para dentro de **`htdocs/`** (não crie nenhuma pasta):
 - `index.php` (Página principal de agendamento)
 - `login.php` (Tela de acesso para Admin, Barbeiros e Clientes)
 - `admin.php` (Painel completo de administração)
@@ -37,16 +37,16 @@ Envie todos os arquivos da pasta para dentro de **`htdocs/`**:
 - `db.php` (Conexão e funções do banco JSON)
 - `api.php` (Endpoints auxiliares)
 - `logout.php` (Encerramento de sessão)
-- `.htaccess` (Configuração Apache anti-compressão e segurança)
-- Pasta `data/` com o arquivo `barber_data.json` e o `data/.htaccess`
+- `barber_data.json` (Base de dados em JSON já preenchida)
+- `.htaccess` (Configuração Apache: proteção do JSON e anti-compressão)
 
-*Dica: Você pode enviar o arquivo `barbearia-php-infinityfree.zip` pelo File Manager e clicar com o botão direito em "Extract" (Descompactar) direto no File Manager do InfinityFree!*
+*Dica: Você também pode enviar o arquivo `barbearia-php-sem-pastas.zip` e clicar com o botão direito em "Extract" direto no File Manager do InfinityFree! Todos os arquivos vão direto para `htdocs/` sem criar subpastas.*
 
-### Passo 3: Permissões de escrita (CHMOD)
+### Passo 3: Permissões de escrita (CHMOD) se necessário
 No gerenciador de arquivos do InfinityFree:
-- Clique com o botão direito na pasta **`data`** e em **Permissions / Chmod**.
-- Defina permissão **`775`** ou **`777`** (para que o PHP possa gravar os novos agendamentos no arquivo `barber_data.json`).
-- Faça o mesmo no arquivo `data/barber_data.json`.
+- Clique com o botão direito no arquivo **`barber_data.json`** e em **Permissions / Chmod**.
+- Defina permissão **`666`** ou **`777`** (para que o PHP possa gravar os novos agendamentos no arquivo).
+*(Nota: Se o arquivo `barber_data.json` for criado pelo próprio PHP, ele já terá permissão automática).*
 
 ### Passo 4: Pronto!
 Acesse o seu domínio gratuito do InfinityFree (ex: `https://seunome.epizy.com` ou `https://seunome.infinityfreeapp.com`).

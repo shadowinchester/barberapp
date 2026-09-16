@@ -1,6 +1,8 @@
 import express from 'express';
 import path from 'path';
 import fs from 'fs';
+import http from 'http';
+import { spawn } from 'child_process';
 import { createServer as createViteServer } from 'vite';
 
 const PORT = 3000;
@@ -688,11 +690,45 @@ async function startServer() {
     }
   });
 
+  // Spawn PHP built-in server for live preview of pure PHP
+  try {
+    const phpProc = spawn('php', ['-S', '127.0.0.1:8088', '-t', path.join(process.cwd(), 'php_dist')]);
+    phpProc.stdout?.on('data', (d) => console.log(`[PHP-Server] ${d}`));
+    phpProc.stderr?.on('data', (d) => console.error(`[PHP-Server] ${d}`));
+  } catch (err) {
+    console.error('Failed to start PHP server:', err);
+  }
+
+  // PHP Proxy middleware: allows testing pure PHP directly in the browser
+  app.use(['/php_dist', '/php'], (req, res) => {
+    let phpPath = req.url;
+    if (!phpPath || phpPath === '/') phpPath = '/index.php';
+    const proxyReq = http.request(
+      {
+        hostname: '127.0.0.1',
+        port: 8088,
+        path: phpPath,
+        method: req.method,
+        headers: { ...req.headers, host: '127.0.0.1:8088' }
+      },
+      (proxyRes) => {
+        res.writeHead(proxyRes.statusCode || 200, proxyRes.headers);
+        proxyRes.pipe(res);
+      }
+    );
+    proxyReq.on('error', (err) => {
+      res.status(502).send('PHP server starting up: ' + err.message);
+    });
+    req.pipe(proxyReq);
+  });
+
   // PHP Puro (InfinityFree) ZIP download endpoint
-  app.get(['/api/download-php-zip', '/barbearia-php-infinityfree.zip', '/download-php.zip'], (req, res) => {
-    const zipPath = path.join(process.cwd(), 'barbearia-php-infinityfree.zip');
+  app.get(['/api/download-php-zip', '/barbearia-php-sem-pastas.zip', '/barbearia-php-infinityfree.zip', '/download-php.zip', '/download-php-sem-pastas.zip'], (req, res) => {
+    const semPastasPath = path.join(process.cwd(), 'barbearia-php-sem-pastas.zip');
+    const infinityPath = path.join(process.cwd(), 'barbearia-php-infinityfree.zip');
+    const zipPath = fs.existsSync(semPastasPath) ? semPastasPath : infinityPath;
     if (fs.existsSync(zipPath)) {
-      res.download(zipPath, 'barbearia-php-infinityfree.zip');
+      res.download(zipPath, 'barbearia-php-sem-pastas.zip');
     } else {
       res.status(404).json({ error: 'Arquivo PHP ZIP ainda não gerado.' });
     }

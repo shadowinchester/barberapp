@@ -8,7 +8,7 @@ $settings = $db['settings'] ?? [];
 $shopName = $settings['shopName'] ?? 'Barbearia Dom navalha';
 
 // Ação de cancelar
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'cancel_my_app') {
+if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST' && isset($_POST['action']) && $_POST['action'] === 'cancel_my_app') {
     $appId = $_POST['appId'] ?? '';
     foreach ($db['appointments'] as &$app) {
         if ($app['id'] === $appId) {

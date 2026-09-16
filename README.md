@@ -17,7 +17,7 @@ Agora disponível em **duas versões completas**:
 ### ✨ Como a Versão em PHP Puro Resolve:
 - **Renderização no Servidor (SSR):** O Apache do InfinityFree processa o PHP e entrega HTML puro pronto para o navegador.
 - **Tailwind via CDN Global:** Sem arquivos CSS locais comprimidos que quebram no InfinityFree.
-- **Banco de Dados em JSON Nativo:** Lê e grava direto em `data/barber_data.json` usando `file_get_contents` e `file_put_contents` com `flock`.
+- **Banco de Dados em JSON Nativo:** Lê e grava diretamente em `barber_data.json` (no mesmo diretório, **SEM PASTAS**) usando `file_get_contents` e `file_put_contents` com `flock`.
 - **Sessões Nativas PHP:** `$_SESSION['user']` para login seguro de Admin, Barbeiro e Cliente.
 
 ---
@@ -26,35 +26,35 @@ Agora disponível em **duas versões completas**:
 
 | Provedor | Tipo | Suporte | Recomendação |
 | :--- | :--- | :--- | :--- |
-| **InfinityFree** | Hospedagem Gratuita | **PHP 7.4 / 8.2 + Apache** | Use o arquivo **`barbearia-php-infinityfree.zip`**. 100% funcional na pasta `htdocs/`. |
+| **InfinityFree** | Hospedagem Gratuita | **PHP 7.4 / 8.2 + Apache** | Use o arquivo **`barbearia-php-sem-pastas.zip`**. 100% funcional direto na raiz de `htdocs/` sem criar nenhuma pasta! |
 | **Alwaysdata** | Nuvem Gratuita (100MB) | **PHP ou Node.js** | Excelente alternativa gratuita ao InfinityFree, sem bot injection e sem tela branca. |
 | **Render.com** | Cloud Application (Free) | **Node.js / Docker** | Roda a versão React + Express (`npm start`) com deploy automático via GitHub. |
 | **000webhost / Hostinger** | Hospedagem Compartilhada | **PHP** | Roda a versão PHP Puro com upload direto no gerenciador de arquivos. |
 
 ---
 
-## 🚀 PASSO A PASSO NO INFINITYFREE (5 MINUTOS):
+## 🚀 PASSO A PASSO NO INFINITYFREE (SEM PASTAS):
 
 1. **Baixe o arquivo ZIP da versão PHP:**
-   - Baixe o arquivo **`barbearia-php-infinityfree.zip`** (disponível na raiz ou pelo link `/barbearia-php-infinityfree.zip`).
+   - Baixe o arquivo **`barbearia-php-sem-pastas.zip`** (disponível na raiz ou pelo link `/barbearia-php-sem-pastas.zip`).
 2. **Acesse o Gerenciador de Arquivos:**
    - Entre no painel do InfinityFree e abra o **Online File Manager** (MonstaFTP).
 3. **Abra a pasta `htdocs/`:**
    - **Importante:** Apague qualquer arquivo existente dentro de `htdocs/` (como `index2.html`).
-4. **Extraia os arquivos:**
-   - Envie todos os arquivos do zip para a raiz de `htdocs/`:
-     - `index.php`
-     - `login.php`
-     - `admin.php`
-     - `barbeiro.php`
-     - `meus-agendamentos.php`
-     - `db.php`
-     - `api.php`
-     - `logout.php`
-     - `.htaccess`
-     - Pasta `data/` com `barber_data.json`
-5. **Permissão de Escrita (Chmod):**
-   - No gerenciador, clique com o botão direito na pasta **`data`** e marque permissão **`775`** ou **`777`** (para o PHP conseguir gravar agendamentos no JSON).
+4. **Extraia ou envie os arquivos (TODOS NA RAIZ, SEM PASTAS):**
+   - Envie todos os arquivos do zip diretamente para `htdocs/` (NÃO crie nenhuma subpasta):
+     - `index.php` (Página pública de agendamento)
+     - `login.php` (Login e cadastro)
+     - `admin.php` (Painel do administrador)
+     - `barbeiro.php` (Painel da agenda do barbeiro)
+     - `meus-agendamentos.php` (Painel do cliente)
+     - `db.php` (Funções do banco de dados JSON)
+     - `api.php` (Endpoints auxiliares)
+     - `logout.php` (Logout)
+     - `barber_data.json` (Banco de dados JSON inicial)
+     - `.htaccess` (Proteção de arquivos e anti-compressão)
+5. **Permissão de Escrita (Chmod) se necessário:**
+   - No gerenciador, se o PHP não conseguir salvar agendamentos, clique com o botão direito no arquivo **`barber_data.json`** e defina permissão **`666`** ou **`777`**.
 6. **Acesse seu domínio:**
    - Abra `https://seunome.infinityfreeapp.com` ou `https://seunome.epizy.com` no navegador. O sistema abrirá imediatamente!
 
