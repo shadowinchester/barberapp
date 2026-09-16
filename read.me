@@ -1,0 +1,102 @@
+# Barbearia Dom Navalha - Credenciais de Acesso & Instruções
+
+Sistema de Agendamento Online e Gestão da Barbearia.
+
+=======================================================
+1. CREDENCIAIS DE ACESSO AO SISTEMA
+=======================================================
+
+--- PERFIL ADMINISTRADOR GERAL ---
+Usuário / Login: admin
+Senha:           admin
+Telefone:        (11) 99999-9999
+Módulos:         Gestão de Barbeiros, Serviços, Preços, Configurações e Agenda Geral.
+
+--- PERFIL BARBEIROS (EQUIPE) ---
+1) Rodrigo 'Navalha' Silva
+   Usuário / Login: rodrigo
+   Senha:           123
+   Telefone:        (11) 99111-2233
+   Especialidade:   Degradê, Barboterapia e Desenhos
+
+2) Marcos Andrade
+   Usuário / Login: marcos
+   Senha:           123
+   Telefone:        (11) 99222-3344
+   Especialidade:   Cortes Clássicos e Barba Italiana
+
+3) Gabriel Santos
+   Usuário / Login: gabriel
+   Senha:           123
+   Telefone:        (11) 99333-4455
+   Especialidade:   Coloração, Platinado e Barba Alinhada
+
+--- 10 CLIENTES CADASTRADOS PARA TESTE ---
+1) Lucas Oliveira
+   Usuário: lucas
+   WhatsApp: (11) 99888-7766
+   Senha: 123
+
+2) Mateus Henrique Costa
+   Usuário: mateus
+   WhatsApp: (11) 98123-4567
+   Senha: 123
+
+3) Bruno Fernando Lima
+   Usuário: bruno
+   WhatsApp: (11) 97234-5678
+   Senha: 123
+
+4) Thiago Martins Alves
+   Usuário: thiago
+   WhatsApp: (11) 96345-6789
+   Senha: 123
+
+5) Felipe Augusto Rocha
+   Usuário: felipe
+   WhatsApp: (11) 95456-7890
+   Senha: 123
+
+6) Rafael Nogueira Souza
+   Usuário: rafael
+   WhatsApp: (11) 94567-8901
+   Senha: 123
+
+7) Diego Moreira Duarte
+   Usuário: diego
+   WhatsApp: (11) 93678-9012
+   Senha: 123
+
+8) Guilherme Ramos Castro
+   Usuário: guilherme
+   WhatsApp: (11) 92789-0123
+   Senha: 123
+
+9) Leonardo Barros Pires
+   Usuário: leonardo
+   WhatsApp: (11) 91890-1234
+   Senha: 123
+
+10) Vinícius Ribeiro Mendes
+    Usuário: vinicius
+    WhatsApp: (11) 98901-2345
+    Senha: 123
+
+=======================================================
+2. COMO HOSPEDAR ESTE PROJETO
+=======================================================
+
+A) HOSPEDAGEM NODE.JS / VPS / DOCKER:
+1. Instale os pacotes:
+   npm install
+2. Gere a compilação:
+   npm run build
+3. Execute o servidor:
+   npm start
+O servidor iniciará na porta 3000.
+
+B) HOSPEDAGEM COMPARTILHADA (cPanel / Hostinger / PHP):
+1. Execute "npm run build" para gerar a pasta "dist/".
+2. Copie os arquivos da pasta "dist/" para a raiz do seu site (public_html).
+3. Copie a pasta "data/" contendo "barber_data.json" com permissão 775.
+4. Utilize a API em PHP em "php/api.php".
