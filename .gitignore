@@ -1,8 +1,34 @@
+# =======================================================
+# Arquivos ignorados ao subir para o GitHub (InfinityFree PHP)
+# Deixa APENAS os arquivos PHP, JSON e .htaccess no repositório
+# =======================================================
+
+# Dependências e caches
 node_modules/
-build/
 dist/
+build/
 coverage/
 .DS_Store
 *.log
 .env*
-!.env.example
+
+# Arquivos de empacotamento
+*.zip
+
+# Pastas de desenvolvimento React / Node (não vão para o GitHub PHP)
+src/
+public/
+data/
+php/
+php_dist/
+
+# Configurações locais Node/Vite (não vão para o GitHub PHP)
+server.ts
+vite.config.ts
+tsconfig.json
+bun.lock
+metadata.json
+index.html
+package.json
+package-lock.json
+read.me
