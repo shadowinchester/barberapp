@@ -1,0 +1,4 @@
+# Impede que visitantes baixem o arquivo barber_data.json direto pela URL
+# Somente os scripts PHP do servidor podem ler e salvar
+Order deny,allow
+Deny from all

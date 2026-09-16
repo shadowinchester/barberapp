@@ -1,0 +1,28 @@
+# Configuração Apache para Hospedagem InfinityFree / cPanel
+DirectoryIndex index.php index.html
+
+# Forçar Charset UTF-8
+AddDefaultCharset UTF-8
+
+# Prevenir problemas com compressão defeituosa em hospedagens gratuitas
+<IfModule mod_env.c>
+    SetEnv no-gzip 1
+</IfModule>
+
+# Tipos MIME corretos
+<IfModule mod_mime.c>
+    AddType text/html .html .php
+    AddType text/css .css
+    AddType application/javascript .js
+    AddType application/json .json
+    AddType image/svg+xml .svg
+</IfModule>
+
+# Impedir listagem de diretórios
+Options -Indexes
+
+# Prevenir acesso direto a arquivos sensíveis
+<FilesMatch "(^\.htaccess|\.git|\.env|composer\.json)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>

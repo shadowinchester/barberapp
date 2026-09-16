@@ -688,6 +688,16 @@ async function startServer() {
     }
   });
 
+  // PHP Puro (InfinityFree) ZIP download endpoint
+  app.get(['/api/download-php-zip', '/barbearia-php-infinityfree.zip', '/download-php.zip'], (req, res) => {
+    const zipPath = path.join(process.cwd(), 'barbearia-php-infinityfree.zip');
+    if (fs.existsSync(zipPath)) {
+      res.download(zipPath, 'barbearia-php-infinityfree.zip');
+    } else {
+      res.status(404).json({ error: 'Arquivo PHP ZIP ainda não gerado.' });
+    }
+  });
+
   // Vite middleware for development
   if (process.env.NODE_ENV !== 'production') {
     const vite = await createViteServer({
