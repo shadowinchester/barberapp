@@ -4,8 +4,13 @@
  * Compatível com qualquer servidor Apache/Nginx e hospedagens gratuitas (InfinityFree, cPanel, etc.)
  */
 
+// Evita tela branca exibindo qualquer erro ou aviso do PHP caso ocorra
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
+
 if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+    @session_start();
 }
 
 // Caminho absoluto para a base de dados em JSON (no mesmo diretorio, sem pastas)

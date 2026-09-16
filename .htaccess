@@ -1,33 +1,8 @@
-# Configuração Apache para Hospedagem InfinityFree / cPanel
+# Configuração Apache 100% segura para InfinityFree e cPanel
 DirectoryIndex index.php index.html
 
-# Forçar Charset UTF-8
-AddDefaultCharset UTF-8
-
-# Prevenir problemas com compressão defeituosa em hospedagens gratuitas
-<IfModule mod_env.c>
-    SetEnv no-gzip 1
-</IfModule>
-
-# Tipos MIME corretos
-<IfModule mod_mime.c>
-    AddType text/html .html .php
-    AddType text/css .css
-    AddType application/javascript .js
-    AddType application/json .json
-    AddType image/svg+xml .svg
-</IfModule>
-
-# Impedir listagem de diretórios
-Options -Indexes
-
-# Prevenir acesso direto a arquivos sensíveis e ao banco de dados JSON
-<FilesMatch "(^\.htaccess|\.git|\.env|composer\.json|.*\.json$)">
-    <IfModule mod_authz_core.c>
-        Require all denied
-    </IfModule>
-    <IfModule !mod_authz_core.c>
-        Order allow,deny
-        Deny from all
-    </IfModule>
-</FilesMatch>
+# Proteger o arquivo de dados JSON contra download público no navegador
+<Files "barber_data.json">
+    Order Allow,Deny
+    Deny from all
+</Files>
