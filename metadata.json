@@ -1,6 +1,0 @@
-{
-  "name": "BarberApp - Agendamento para Barbearia",
-  "description": "Aplicativo web para agendamento de horários na barbearia com área do cliente, painel do barbeiro e dados em JSON.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
